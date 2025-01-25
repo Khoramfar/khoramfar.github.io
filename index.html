@@ -139,6 +139,37 @@
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(2);
+            border-radius: 5%;
+
+        }
+
+        .modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal:target {
+            display: flex;
         }
 
         .icon {
@@ -220,9 +251,31 @@
                         <p><i class="fas fa-camera icon"></i><strong>Other Activities:</strong> Nature Photography</p>
                     </div>
                     <div class="gallery">
+                        <a href="#img1">
+                            <img id="img1" src="canoeing.jpg" alt="Canoeing">
+                        </a>
+                        <a href="#img2">
+                            <img id="img2" src="mountains.jpg" alt="Mountain Climbing">
+                        </a>
+                        <a href="#img3">
+                            <img id="img3" src="swimming.jpg" alt="Swimming">
+                        </a>
+                        <a href="#img4">
+                            <img id="img4" src="nature.jpg" alt="Nature Photography">
+                        </a>
+                    </div>
+                    
+                    <!-- Modal Structure -->
+                    <div id="img1" class="modal">
                         <img src="canoeing.jpg" alt="Canoeing">
+                    </div>
+                    <div id="img2" class="modal">
                         <img src="mountains.jpg" alt="Mountain Climbing">
+                    </div>
+                    <div id="img3" class="modal">
                         <img src="swimming.jpg" alt="Swimming">
+                    </div>
+                    <div id="img4" class="modal">
                         <img src="nature.jpg" alt="Nature Photography">
                     </div>
                 </section>
