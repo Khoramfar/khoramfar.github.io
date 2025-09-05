@@ -1,298 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Khoramfar</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #34495e;
-            --secondary-color: #1abc9c;
-            --accent-color: #16a085;
-            --background-color: #ecf0f1;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            margin: 0;
-            color: var(--primary-color);
-            line-height: 1.6;
-        }
-
-        .sidebar {
-            background-color: var(--primary-color);
-            color: white;
-            min-height: 100vh;
-            padding: 20px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            border-right: 3px solid var(--accent-color);
-        }
-
-        .sidebar img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            margin-bottom: 15px;
-            border: 2px solid #ffffff;
-        }
-
-        .sidebar h3 {
-            font-size: 1.7rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .sidebar .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .sidebar .social-icons a {
-            color: white;
-            font-size: 1.4rem;
-            transition: color 0.3s;
-        }
-
-        .sidebar .social-icons a:hover {
-            color: var(--secondary-color);
-        }
-
-        .sidebar nav {
-            width: 100%;
-        }
-
-        .sidebar nav a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 12px 15px;
-            margin: 8px 0;
-            border-radius: 8px;
-            text-align: center;
-            transition: background-color 0.3s;
-            font-weight: 600;
-        }
-
-        .sidebar nav a:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .main-content {
-            padding: 30px;
-        }
-
-        .section {
-            background-color: white;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            padding: 30px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 10px;
-        }
-
-        .section p {
-            margin-bottom: 15px;
-        }
-
-        .highlight {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .gallery img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery img:hover {
-            transform: scale(2);
-            border-radius: 5%;
-
-        }
-
-        .modal {
-            display: none; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal:target {
-            display: flex;
-        }
-
-        .icon {
-            font-size: 1.4rem;
-            margin-right: 10px;
-            color: var(--accent-color);
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ali Khoramfar — Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f5f7fa;
+      --glass: rgba(255,255,255,0.65);
+      --stroke: rgba(0,0,0,0.08);
+      --txt:#1a1a1a;
+      --muted:#5a5a5a;
+      --accent:#007aff;
+      --accent-ink:#005fcc;
+      --radius: 18px;
+      --shadow: 0 8px 24px rgba(0,0,0,.07);
+      --transition: .25s ease;
+      --h-font: "Plus Jakarta Sans", -apple-system, system-ui, sans-serif;
+      --b-font: Inter, -apple-system, system-ui, sans-serif;
+    }
+    body{margin:0;font-family:var(--b-font);background:var(--bg);color:var(--txt);}
+    .grid{display:grid;grid-template-columns:280px 1fr;gap:26px;max-width:1150px;margin:24px auto;padding:0 16px;}
+    @media(max-width:900px){.grid{grid-template-columns:1fr;}}
+    .glass{backdrop-filter: blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);background:var(--glass);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);} 
+    .sidebar{position:sticky;top:20px;align-self:start;height:max-content;padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px;}
+    .avatar img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 4px 12px rgba(0,0,0,.08);} 
+    h1{font-family:var(--h-font);font-size:1.55rem;margin:10px 0 0;}
+    .tag{font-size:.92rem;color:var(--muted);white-space:nowrap;}
+    .download-btn{display:block;width:100%;padding:10px 0;margin:6px 0;border-radius:10px;text-align:center;font-weight:700;background:var(--accent);color:white;text-decoration:none;transition:var(--transition);} 
+    .download-btn:hover{filter:brightness(.95);} 
+    .social{display:flex;gap:10px;}
+    .social a{color:var(--accent);font-size:1.2rem;}
+    nav ul{list-style:none;padding:0;margin:10px 0;display:flex;flex-direction:column;gap:6px;width:100%;}
+    nav a{display:block;padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--txt);transition:var(--transition);} 
+    nav a:hover{background:rgba(0,122,255,.08);} 
+    .content{display:flex;flex-direction:column;gap:22px;}
+    section{padding:22px;}
+    section h2{margin-top:0;display:flex;align-items:center;gap:8px;font:700 1.05rem var(--h-font);color:var(--accent);} 
+    p{margin:0;line-height:1.6;text-align:justify;}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:white;border:1px solid var(--stroke);font-weight:600;}
+    .chip i{color:var(--accent);} 
+    .stack{display:flex;flex-direction:column;gap:14px;}
+    .entry{padding:14px 16px;border-radius:12px;background:white;border:1px solid var(--stroke);} 
+    .entry b{font-weight:700;}
+    .date-line{color:var(--accent-ink);font-weight:600;margin-top:4px;font-size:.85rem;}
+    .row{margin-top:6px;}
+    .label{font:700 .82rem var(--h-font);letter-spacing:.02em;text-transform:uppercase;color:#333;background:rgba(0,0,0,.04);border:1px solid var(--stroke);padding:3px 7px;border-radius:6px;margin-right:6px;}
+    .value{font-weight:700;color:var(--accent-ink);margin-left:4px;}
+    .skills-list{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+    .skill-row{padding:10px 12px;border:1px solid var(--stroke);border-radius:10px;background:white;display:flex;align-items:center;gap:10px;}
+    .skill-row i{color:var(--accent);} 
+    .gallery{display:flex;justify-content:center;gap:18px;flex-wrap:nowrap;margin-top:14px;}
+    .gallery img{width:160px;height:160px;border-radius:50%;object-fit:cover;cursor:pointer;transition:transform .25s;box-shadow:0 3px 8px rgba(0,0,0,.1);} 
+    .gallery img:hover{transform:scale(1.12);} 
+  </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 sidebar">
-                <img src="profile.jpg" alt="Profile Image">
-                <h3>Ali Khoramfar</h3>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/ali-khoramfar/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://scholar.google.com/citations?user=7NZ3s_gAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-                </div>
-                <nav>
-                    <a href="#about-me">About Me</a>
-                    <a href="#research-interests">Research Interests</a>
-                    <a href="#education">Education</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#academic-papers">Academic Papers</a>
-                    <a href="#extracurricular">Extracurricular</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
+  <main class="grid">
+    <aside class="sidebar glass">
+      <div class="avatar"><img src="profile.jpg" alt="Ali Khoramfar"></div>
+      <h1>Ali Khoramfar</h1>
+      <div class="tag">NLP Researcher</div>
+      <a class="download-btn" href="Ali_Khoramfar_CV.pdf" target="_blank"><i class="fas fa-download"></i> Download CV</a>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/ali-khoramfar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Khoramfar" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://scholar.google.com/citations?user=7NZ3s_gAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+          <li><a href="#interests"><i class="fas fa-lightbulb"></i> Research Interests</a></li>
+          <li><a href="#edu"><i class="fas fa-graduation-cap"></i> Education</a></li>
+          <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+          <li><a href="#papers"><i class="fas fa-file-alt"></i> Publications</a></li>
+          <li><a href="#experience"><i class="fas fa-flask"></i> Research Experience</a></li>
+          <li><a href="#teaching"><i class="fas fa-chalkboard-teacher"></i> Teaching</a></li>
+          <li><a href="#extra"><i class="fas fa-heart"></i> Activities</a></li>
+          <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-            <!-- Main Content -->
-            <div class="col-md-9 col-lg-10 main-content">
-                <section id="about-me" class="section">
-                    <h2><i class="fas fa-user icon"></i>About Me</h2>
-                    <p>A researcher with a passion for tackling real-world challenges through innovative <span class="highlight">AI solutions</span>. My work focuses on natural language processing, distributed systems, and multimodal learning. I strive to bridge the gap between advanced computational theories and practical applications, ensuring impactful outcomes across industries. Collaboration and lifelong learning are at the core of my professional ethos.</p>
-                </section>
+    <div class="content">
+      <section id="about" class="glass">
+        <h2><i class="fas fa-user"></i> About</h2>
+        <p>
+          I am a computer engineering graduate student at the University of Tehran. My research focuses on natural language processing, deep learning, and multimodal learning, with a growing interest in multimodal agents and their applications in areas like medical imaging. I enjoy collaborative, methodical research—exploring new architectures and building practical AI systems.
+        </p>
+      </section>
 
-                <section id="research-interests" class="section">
-                    <h2><i class="fas fa-lightbulb icon"></i>Research Interests</h2>
-                    <div>
-                        <p><i class="fas fa-check icon"></i>Natural Language Processing</p>
-                        <p><i class="fas fa-check icon"></i>Distributed Deep Learning</p>
-                        <p><i class="fas fa-check icon"></i>Multimodal Learning</p>
-                    </div>
-                </section>
-
-                <section id="education" class="section">
-                    <h2><i class="fas fa-graduation-cap icon"></i>Education</h2>
-                    <div>
-                        <p><i class="fas fa-university icon"></i><strong>University of Tehran</strong> (2023 – Present)<br>Master of Science in Computer Engineering<br>GPA: <span class="highlight">19.33/20 (4.0/4.0)</span></p>
-                        <p><i class="fas fa-university icon"></i><strong>JundiShapur University of Technology</strong> (2017 – 2022)<br>Bachelor of Science in Computer Engineering<br>GPA: <span class="highlight">19.11/20 (4.0/4.0)</span>, Ranked 1st among all students</p>
-                    </div>
-                </section>
-
-                <section id="skills" class="section">
-                    <h2><i class="fas fa-tools icon"></i>Technical Skills</h2>
-                    <div>
-                        <p><i class="fas fa-code icon"></i><strong>Programming Languages:</strong> Python, C++, C#, SQL, CUDA</p>
-                        <p><i class="fas fa-cogs icon"></i><strong>Frameworks & Tools:</strong> PyTorch, HuggingFace, Docker, Git</p>
-                        <p><i class="fas fa-network-wired icon"></i><strong>Distributed Computing:</strong> Apache Spark, Apache Kafka, ClickHouse, MPI, Slurm</p>
-                    </div>
-                </section>
-
-                <section id="academic-papers" class="section">
-                    <h2><i class="fas fa-file-alt icon"></i>Academic Papers</h2>
-                    <div>
-                        <p><i class="fas fa-book icon"></i><strong>Chinipardaz, M., Khoramfar, A., & Amraee, S.</strong> (2024). "Green Internet of Things and Solar Energy." <em>Environmental Science and Pollution Research</em>, 31(12), 18296-18312. <a href="https://doi.org/10.1007/s11356-023-31141-z" target="_blank">DOI</a></p>
-                        <p><i class="fas fa-book icon"></i><strong>Khoramfar A., & Chinipardaz M.</strong> (2020). "The Role of IoT in Innovation and Business Development." Presented at the First National Conference of Entrepreneurial Universities, Dezful.</p>
-                        <p><i class="fas fa-book icon"></i><strong>Amraei S., & Khoramfar A.</strong> (2020). "Green Computing Solutions in Environmental Protection and Use of Renewable Energy." Presented at the National Conference on Chemical Engineering and Nanotechnology, Dezful.</p>
-                    </div>
-                </section>
-                
-                <section id="extracurricular" class="section">
-                    <h2><i class="fas fa-heart icon"></i>Extracurricular Activities</h2>
-                    <div>
-                        <p><i class="fas fa-water icon"></i><strong>Sports:</strong> Canoeing, Mountain Climbing, Biking</p>
-                        <p><i class="fas fa-camera icon"></i><strong>Other Activities:</strong> Nature Photography</p>
-                    </div>
-                    <div class="gallery">
-                        <a href="#img1">
-                            <img id="img1" src="canoeing.jpg" alt="Canoeing">
-                        </a>
-                        <a href="#img2">
-                            <img id="img2" src="mountains.jpg" alt="Mountain Climbing">
-                        </a>
-                        <a href="#img3">
-                            <img id="img3" src="swimming.jpg" alt="Swimming">
-                        </a>
-                        <a href="#img4">
-                            <img id="img4" src="nature.jpg" alt="Nature Photography">
-                        </a>
-                    </div>
-                    
-                    <!-- Modal Structure -->
-                    <div id="img1" class="modal">
-                        <img src="canoeing.jpg" alt="Canoeing">
-                    </div>
-                    <div id="img2" class="modal">
-                        <img src="mountains.jpg" alt="Mountain Climbing">
-                    </div>
-                    <div id="img3" class="modal">
-                        <img src="swimming.jpg" alt="Swimming">
-                    </div>
-                    <div id="img4" class="modal">
-                        <img src="nature.jpg" alt="Nature Photography">
-                    </div>
-                </section>
-                
-                <section id="contact" class="section">
-                    <h2><i class="fas fa-envelope icon"></i>Contact</h2>
-                    <div>
-                        <p><i class="fas fa-envelope icon"></i><strong>Email (UT):</strong> <a href="mailto:khoramfar@ut.ac.ir">khoramfar@ut.ac.ir</a></p>
-                        <p><i class="fas fa-envelope icon"></i><strong>Email (Personal):</strong> <a href="mailto:Alikhorramfar@gmail.com">Alikhorramfar@gmail.com</a></p>
-                    </div>
-                </section>
-            </div>
+      <section id="interests" class="glass">
+        <h2><i class="fas fa-lightbulb"></i> Research Interests</h2>
+        <div class="chips">
+          <span class="chip"><i class="fas fa-language"></i> Natural Language Processing</span>
+          <span class="chip"><i class="fas fa-brain"></i> Deep Learning</span>
+          <span class="chip"><i class="fas fa-robot"></i> Multimodal Learning</span>
         </div>
-    </div>
+      </section>
 
-    <footer>
-        <p>&copy; 2025 Ali Khoramfar. All rights reserved.</p>
-    </footer>
+      <section id="edu" class="glass">
+        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+        <div class="stack">
+          <div class="entry">
+            <b>University of Tehran</b> — M.Sc. Computer Engineering
+            <div class="date-line">2023 – Present</div>
+            <div class="row"><span class="label">GPA</span><span class="value">19.33/20 (4.0/4.0)</span></div>
+            <div class="row"><span class="label">Thesis</span> Investigating the Performance of Multimodal LLMs for Medical Image Analysis</div>
+          </div>
+          <div class="entry">
+            <b>JundiShapur University of Technology</b> — B.Sc. Computer Engineering
+            <div class="date-line">2017 – 2022</div>
+            <div class="row"><span class="label">GPA</span><span class="value">19.11/20 (4.0/4.0)</span></div>
+            <div class="row"><span class="label">Project</span> Green Internet of Things and Solar Energy</div>
+            <div class="row"><span class="label">Rank</span> 1st among Computer Engineering students</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="glass">
+        <h2><i class="fas fa-tools"></i> Skills</h2>
+        <div class="skills-list">
+          <div class="skill-row"><i class="fas fa-code"></i> Python (PyTorch, scikit-learn, NumPy, Pandas, PySpark)</div>
+          <div class="skill-row"><i class="fas fa-code"></i> C++ · C# · SQL</div>
+          <div class="skill-row"><i class="fas fa-cogs"></i> Hugging Face (Transformers, Datasets, PEFT), LangGraph</div>
+          <div class="skill-row"><i class="fas fa-network-wired"></i> PyTorch Distributed, MPI, Slurm</div>
+          <div class="skill-row"><i class="fas fa-gear"></i> Git, Docker, Kubernetes</div>
+        </div>
+      </section>
+
+      <section id="papers" class="glass">
+        <h2><i class="fas fa-file-alt"></i> Publications</h2>
+        <div class="stack">
+          <div class="entry"><b>Green Internet of Things and Solar Energy</b> — Chinipardaz, M., Khoramfar, A., & Amraee, S. (2024). <em>Environmental Science and Pollution Research</em>. <a href="https://doi.org/10.1007/s11356-023-31141-z" target="_blank">DOI</a></div>
+          <div class="entry"><b>Network Level Energy Solutions for Green IoT</b> — Khoramfar, A., & Chinipardaz, M. (2023). First National Conference on Internet of Things.</div>
+          <div class="entry"><b>Green Computing Solutions in Environmental Protection</b> — Amraei, S., & Khoramfar, A. (2021). National Conference on Chemical Engineering & Nanotechnology.</div>
+          <div class="entry"><b>The Role of IoT in Innovation and Business Development</b> — Khoramfar, A., & Chinipardaz, M. (2021). First National Conference on Entrepreneurial Universities.</div>
+        </div>
+      </section>
+
+      <section id="experience" class="glass">
+        <h2><i class="fas fa-flask"></i> Research Experience</h2>
+        <div class="stack">
+          <div class="entry">
+            <b>Graduate Student Researcher</b> — NLP Lab, University of Tehran
+            <div class="date-line">2023 – Present</div>
+          </div>
+          <div class="entry">
+            <b>Undergraduate Research Assistant</b> — Computer Networks Lab, JundiShapur University
+            <div class="date-line">2020 – 2022</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="teaching" class="glass">
+        <h2><i class="fas fa-chalkboard-teacher"></i> Teaching Experience</h2>
+        <div class="stack">
+          <div class="entry"><b>Head TA</b> — Essential Computing Skills, University of Tehran<div class="date-line">Jan 2025 – Present</div></div>
+          <div class="entry"><b>TA</b> — Natural Language Processing, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
+          <div class="entry"><b>TA</b> — Deep Learning, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
+          <div class="entry"><b>TA</b> — Internet Engineering, JundiShapur University<div class="date-line">Sep 2021 – Jan 2022</div></div>
+        </div>
+      </section>
+
+      <section id="extra" class="glass">
+        <h2><i class="fas fa-heart"></i> Activities</h2>
+        <p class="muted">Canoeing · Mountaineering · Biking · Nature Photography</p>
+        <div class="gallery">
+          <img src="canoeing.jpg" alt="Canoeing">
+          <img src="mountains.jpg" alt="Mountain Climbing">
+          <img src="swimming.jpg" alt="Swimming">
+          <img src="nature.jpg" alt="Nature Photography">
+        </div>
+      </section>
+
+      <section id="contact" class="glass">
+        <h2><i class="fas fa-envelope"></i> Contact</h2>
+        <p><i class="fas fa-at"></i> Email: <a href="mailto:Alikhorramfar@gmail.com">Alikhorramfar@gmail.com</a></p>
+      </section>
+    </div>
+  </main>
 </body>
 </html>
