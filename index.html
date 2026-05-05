@@ -37,7 +37,14 @@
     nav a{display:block;padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--txt);transition:var(--transition);} 
     nav a:hover{background:rgba(0,122,255,.08);} 
     .content{display:flex;flex-direction:column;gap:22px;}
-    section{padding:22px;}
+    section {
+      padding: 22px;
+      position: relative;
+      z-index: 1;
+    }
+    section:hover {
+      z-index: 10;
+    }
     section h2{margin-top:0;display:flex;align-items:center;gap:8px;font:700 1.05rem var(--h-font);color:var(--accent);} 
     p{margin:0;line-height:1.6;text-align:justify;}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
@@ -45,17 +52,32 @@
     .chip i{color:var(--accent);} 
     .stack{display:flex;flex-direction:column;gap:14px;}
     .entry{padding:14px 16px;border-radius:12px;background:white;border:1px solid var(--stroke);} 
-    .entry b{font-weight:700;}
+    .entry b.title{font-weight:700;}
     .date-line{color:var(--accent-ink);font-weight:600;margin-top:4px;font-size:.85rem;}
     .row{margin-top:6px;}
     .label{font:700 .82rem var(--h-font);letter-spacing:.02em;text-transform:uppercase;color:#333;background:rgba(0,0,0,.04);border:1px solid var(--stroke);padding:3px 7px;border-radius:6px;margin-right:6px;}
     .value{font-weight:700;color:var(--accent-ink);margin-left:4px;}
     .skills-list{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
-    .skill-row{padding:10px 12px;border:1px solid var(--stroke);border-radius:10px;background:white;display:flex;align-items:center;gap:10px;}
-    .skill-row i{color:var(--accent);} 
+    .skill-row{padding:10px 12px;border:1px solid var(--stroke);border-radius:10px;background:white;display:flex;align-items:flex-start;gap:10px;}
+    .skill-row i{color:var(--accent); margin-top:3px;} 
     .gallery{display:flex;justify-content:center;gap:18px;flex-wrap:nowrap;margin-top:14px;}
-    .gallery img{width:160px;height:160px;border-radius:50%;object-fit:cover;cursor:pointer;transition:transform .25s;box-shadow:0 3px 8px rgba(0,0,0,.1);} 
-    .gallery img:hover{transform:scale(1.12);} 
+        
+    .gallery img {
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      object-fit: cover;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    }
+
+    .gallery img:hover {
+      transform: scale(2.2); /* زوم بیشتر*/
+      z-index: 20; 
+      box-shadow: 0 20px 40px rgba(0,0,0,.4); /* سایه غلیظ‌تر برای جدا شدن عکس از بک‌گراند*/
+    }
   </style>
 </head>
 <body>
@@ -89,16 +111,16 @@
       <section id="about" class="glass">
         <h2><i class="fas fa-user"></i> About</h2>
         <p>
-          I am a computer engineering graduate student and researcher at the University of Tehran, Natural Language Processing Laboratory. My research focuses on natural language processing, vision-language models, and multimodal learning, with a growing interest in multimodal agents and their applications in areas like medical imaging. I enjoy collaborative, methodical research—exploring new architectures and building practical AI systems.
+          I am an M.Sc. student in Computer Engineering and a researcher at the Natural Language Processing Laboratory, University of Tehran. My research bridges the gap between text and vision, focusing heavily on Vision-Language Models (VLMs) and multimodal learning. I am particularly passionate about advancing AI in multilingual settings and developing robust, real-world systems for clinical and biomedical applications.
         </p>
       </section>
 
       <section id="interests" class="glass">
         <h2><i class="fas fa-lightbulb"></i> Research Interests</h2>
         <div class="chips">
-          <span class="chip"><i class="fas fa-language"></i> Natural Language Processing</span>
           <span class="chip"><i class="fas fa-eye"></i> Vision-Language Models</span>
-          <span class="chip"><i class="fas fa-robot"></i> Multimodal Learning</span>
+          <span class="chip"><i class="fas fa-language"></i> Multilingual & Cross-Lingual NLP</span>
+          <span class="chip"><i class="fas fa-notes-medical"></i> Biomedical & Clinical AI</span>
         </div>
       </section>
 
@@ -106,13 +128,13 @@
         <h2><i class="fas fa-graduation-cap"></i> Education</h2>
         <div class="stack">
           <div class="entry">
-            <b>University of Tehran</b> — M.Sc. Computer Engineering
+            <b class="title">University of Tehran</b> — M.Sc. Computer Engineering
             <div class="date-line">2023 – Present</div>
             <div class="row"><span class="label">GPA</span><span class="value">19.33/20 (4.0/4.0)</span></div>
             <div class="row"><span class="label">Thesis</span> Investigating the Performance of Multimodal LLMs for Medical Image Analysis</div>
           </div>
           <div class="entry">
-            <b>JundiShapur University of Technology</b> — B.Sc. Computer Engineering
+            <b class="title">JundiShapur University of Technology</b> — B.Sc. Computer Engineering
             <div class="date-line">2017 – 2022</div>
             <div class="row"><span class="label">GPA</span><span class="value">19.11/20 (4.0/4.0)</span></div>
             <div class="row"><span class="label">Project</span> Green Internet of Things and Solar Energy</div>
@@ -124,21 +146,52 @@
       <section id="skills" class="glass">
         <h2><i class="fas fa-tools"></i> Skills</h2>
         <div class="skills-list">
-          <div class="skill-row"><i class="fas fa-code"></i> Python (PyTorch, Distributed Training, scikit-learn, NumPy, Pandas, PySpark)</div>
-          <div class="skill-row"><i class="fas fa-code"></i> C++ · C# · SQL</div>
-          <div class="skill-row"><i class="fas fa-cogs"></i> Hugging Face (Transformers, Datasets, PEFT), Unsloth, LangGraph</div>
-          <div class="skill-row"><i class="fas fa-network-wired"></i> MPI, Slurm, Git</div>
+          <div class="skill-row">
+            <i class="fas fa-code"></i>
+            <div><b>Programming:</b> Python (NumPy, Pandas, Matplotlib, scikit-learn, PySpark), C++, C#, SQL</div>
+          </div>
+          <div class="skill-row">
+            <i class="fas fa-cubes"></i>
+            <div><b>Frameworks:</b> PyTorch Distributed, Hugging Face (Transformers, Datasets, PEFT), LangGraph, Unsloth</div>
+          </div>
+          <div class="skill-row">
+            <i class="fas fa-network-wired"></i>
+            <div><b>Tools:</b> Git, MPI, Slurm, LaTeX</div>
+          </div>
+          <div class="skill-row">
+            <i class="fas fa-globe"></i>
+            <div><b>Web Development:</b> HTML, CSS, PHP, Laravel, WordPress</div>
+          </div>
+          <div class="skill-row">
+            <i class="fas fa-camera-retro"></i>
+            <div><b>Multimedia:</b> Final Cut Pro, Adobe Photoshop; Experience in DSLR Photography & Videography</div>
+          </div>
         </div>
       </section>
 
       <section id="papers" class="glass">
         <h2><i class="fas fa-file-alt"></i> Publications</h2>
         <div class="stack">
-          <div class="entry"><b>PerMed-MM: A Multimodal, Multi-Specialty Persian Medical Benchmark for Evaluating Vision Language Models</b> — Khoramfar A., Dousti M. J., & Faili H. (2025). <em>IJCNLP-AACL 2025 (Main Conference)</em>.</div>
-          <div class="entry"><b>Green Internet of Things and Solar Energy</b> — Chinipardaz, M., Khoramfar, A., & Amraee, S. (2024). <em>Environmental Science and Pollution Research</em>. <a href="https://doi.org/10.1007/s11356-023-31141-z" target="_blank">DOI</a></div>
-          <div class="entry"><b>Network Level Energy Solutions for Green IoT</b> — Khoramfar, A., & Chinipardaz, M. (2023). First National Conference on Internet of Things.</div>
-          <div class="entry"><b>Green Computing Solutions in Environmental Protection</b> — Amraei, S., & Khoramfar, A. (2021). National Conference on Chemical Engineering & Nanotechnology.</div>
-          <div class="entry"><b>The Role of IoT in Innovation and Business Development</b> — Khoramfar, A., & Chinipardaz, M. (2021). First National Conference on Entrepreneurial Universities.</div>
+          <div class="entry">
+            <b class="title">Stable Evidence, Unstable Decisions: An Empirical Analysis of Model Decision Stability in VLMs</b><br>
+            <b>Khoramfar A.</b>, Dousti M. J., Mohamadian A., & Faili H.
+            <div class="date-line">ACL 2026 (Findings)</div>
+          </div>
+          <div class="entry">
+            <b class="title">DeepQuestion: Systematic Generation of Real-World Challenges for Evaluating LLMs Performance</b><br>
+            <b>Khoramfar A.</b>, Ramezani A., Mohajeri M. M., Dousti M. J., Nili Ahmadabadi M., & Faili H.
+            <div class="date-line">LREC 2026</div>
+          </div>
+          <div class="entry">
+            <b class="title">PerMed-MM: A Multimodal, Multi-Specialty Persian Medical Benchmark for Evaluating Vision Language Models</b><br>
+            <b>Khoramfar A.</b>, Dousti M. J., & Faili H.
+            <div class="date-line">IJCNLP-AACL 2025 (Main Conference)</div>
+          </div>
+          <div class="entry">
+            <b class="title">Green Internet of Things and Solar Energy</b><br>
+            Chinipardaz M., <b>Khoramfar A.</b>, & Amraee S.
+            <div class="date-line">Environmental Science and Pollution Research (2024) <a href="https://doi.org/10.1007/s11356-023-31141-z" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:bold;margin-left:4px;">[DOI]</a></div>
+          </div>
         </div>
       </section>
 
@@ -146,12 +199,14 @@
         <h2><i class="fas fa-flask"></i> Research Experience</h2>
         <div class="stack">
           <div class="entry">
-            <b>Graduate Student Researcher</b> — NLP Lab, University of Tehran
+            <b class="title">Graduate Student Researcher</b> — NLP Lab, University of Tehran
             <div class="date-line">2023 – Present</div>
+            <div class="row" style="font-size:0.9rem; color:var(--muted); margin-top:8px;">Focusing on multimodal and multilingual evaluation of LLMs/VLMs, benchmark construction, and serving as a reviewer for ACL Rolling Review.</div>
           </div>
           <div class="entry">
-            <b>Undergraduate Research Assistant</b> — Computer Networks Lab, JundiShapur University
+            <b class="title">Undergraduate Research Assistant</b> — Computer Networks Lab, JundiShapur University
             <div class="date-line">2020 – 2022</div>
+            <div class="row" style="font-size:0.9rem; color:var(--muted); margin-top:8px;">Conducted research on energy-efficient computing and designed optimizing architectures for IoT and solar-powered solutions.</div>
           </div>
         </div>
       </section>
@@ -159,11 +214,12 @@
       <section id="teaching" class="glass">
         <h2><i class="fas fa-chalkboard-teacher"></i> Teaching Experience</h2>
         <div class="stack">
-          <div class="entry"><b>Head TA</b> — Distributed Machine Learning, University of Tehran<div class="date-line">Sep 2025 – Present</div></div>
-          <div class="entry"><b>Head TA</b> — Essential Computing Skills, University of Tehran<div class="date-line">Jan 2025 – Sep 2025</div></div>
-          <div class="entry"><b>TA</b> — Natural Language Processing, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
-          <div class="entry"><b>TA</b> — Deep Learning, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
-          <div class="entry"><b>TA</b> — Internet Engineering, JundiShapur University<div class="date-line">Sep 2021 – Jan 2022</div></div>
+          <div class="entry"><b class="title">Head TA</b> — Large Language Models, University of Tehran<div class="date-line">Present</div></div>
+          <div class="entry"><b class="title">TA</b> — Distributed Machine Learning, University of Tehran<div class="date-line">Sep 2025 – Feb 2026</div></div>
+          <div class="entry"><b class="title">Head TA</b> — Essential Computing Skills, University of Tehran<div class="date-line">Jan 2025 – Sep 2025</div></div>
+          <div class="entry"><b class="title">TA</b> — Natural Language Processing, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
+          <div class="entry"><b class="title">TA</b> — Deep Learning, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
+          <div class="entry"><b class="title">TA</b> — Internet Engineering, JundiShapur University<div class="date-line">Sep 2021 – Jan 2022</div></div>
         </div>
       </section>
 
@@ -173,14 +229,14 @@
         <div class="gallery">
           <img src="canoeing.jpg" alt="Canoeing">
           <img src="mountains.jpg" alt="Mountain Climbing">
-          <img src="swimming.jpg" alt="Swimming">
-          <img src="nature.jpg" alt="Nature Photography">
+          <img src="wildlife.jpg" alt="Wild Life">
+          <img src="waterfall.jpg" alt="Waterfall">
         </div>
       </section>
 
       <section id="contact" class="glass">
         <h2><i class="fas fa-envelope"></i> Contact</h2>
-        <p><i class="fas fa-at"></i> Email: <a href="mailto:Alikhorramfar@gmail.com">Alikhorramfar@gmail.com</a></p>
+        <p><i class="fas fa-at"></i> Email: <a href="mailto:Alikhorramfar@gmail.com" style="color:var(--accent);text-decoration:none;font-weight:600;">Alikhorramfar@gmail.com</a></p>
       </section>
     </div>
   </main>
