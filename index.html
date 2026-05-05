@@ -3,92 +3,384 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ali Khoramfar</title>
+  <title>Ali Khoramfar | NLP Researcher</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#f5f7fa;
-      --glass: rgba(255,255,255,0.65);
-      --stroke: rgba(0,0,0,0.08);
-      --txt:#1a1a1a;
-      --muted:#5a5a5a;
-      --accent:#007aff;
-      --accent-ink:#005fcc;
-      --radius: 18px;
-      --shadow: 0 8px 24px rgba(0,0,0,.07);
-      --transition: .25s ease;
-      --h-font: "Plus Jakarta Sans", -apple-system, system-ui, sans-serif;
-      --b-font: Inter, -apple-system, system-ui, sans-serif;
+    :root {
+
+      --bg: #050505;
+      --surface: rgba(20, 20, 22, 0.45);
+      --surface-hover: rgba(30, 30, 35, 0.6);
+      --stroke: rgba(255, 255, 255, 0.08);
+      --stroke-light: rgba(255, 255, 255, 0.15);
+      
+      --text-main: #f8f9fa;
+      --text-muted: #9ca3af;
+      --text-darker: #6b7280;
+      
+      --accent: #3b82f6; 
+      --accent-glow: rgba(59, 130, 246, 0.4);
+      --accent-bg: rgba(59, 130, 246, 0.1);
+      
+      --radius: 24px;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      
+      --h-font: "Plus Jakarta Sans", -apple-system, sans-serif;
+      --b-font: "Inter", -apple-system, sans-serif;
     }
-    body{margin:0;font-family:var(--b-font);background:var(--bg);color:var(--txt);}
-    .grid{display:grid;grid-template-columns:280px 1fr;gap:26px;max-width:1150px;margin:24px auto;padding:0 16px;}
-    @media(max-width:900px){.grid{grid-template-columns:1fr;}}
-    .glass{backdrop-filter: blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);background:var(--glass);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);} 
-    .sidebar{position:sticky;top:20px;align-self:start;height:max-content;padding:22px;display:flex;flex-direction:column;align-items:center;gap:14px;}
-    .avatar img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid white;box-shadow:0 4px 12px rgba(0,0,0,.08);} 
-    h1{font-family:var(--h-font);font-size:1.55rem;margin:10px 0 0;}
-    .tag{font-size:.92rem;color:var(--muted);white-space:nowrap;}
-    .download-btn{display:block;width:100%;padding:10px 0;margin:6px 0;border-radius:10px;text-align:center;font-weight:700;background:var(--accent);color:white;text-decoration:none;transition:var(--transition);} 
-    .download-btn:hover{filter:brightness(.95);} 
-    .social{display:flex;gap:10px;}
-    .social a{color:var(--accent);font-size:1.2rem;}
-    nav ul{list-style:none;padding:0;margin:10px 0;display:flex;flex-direction:column;gap:6px;width:100%;}
-    nav a{display:block;padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--txt);transition:var(--transition);} 
-    nav a:hover{background:rgba(0,122,255,.08);} 
-    .content{display:flex;flex-direction:column;gap:22px;}
-    section {
-      padding: 22px;
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--b-font);
+      background-color: var(--bg);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Subtle Ambient Lighting */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      width: 50vw;
+      height: 50vh;
+      border-radius: 50%;
+      filter: blur(150px);
+      z-index: -1;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    body::before { top: -10%; left: -10%; background: #3b82f6; }
+    body::after { bottom: -10%; right: -10%; background: #8b5cf6; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      max-width: 1200px;
+      margin: 4vh auto;
+      padding: 0 20px;
+    }
+
+
+    .glass {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+      border-top: 1px solid var(--stroke-light);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    } 
+
+
+    .sidebar {
+      position: sticky;
+      top: 4vh;
+      height: max-content;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .avatar { position: relative; }
+    .avatar img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--stroke-light);
+      padding: 4px;
+      background: rgba(255,255,255,0.02);
+      transition: var(--transition);
+    } 
+    .avatar img:hover { transform: scale(1.05) rotate(2deg); border-color: var(--accent); }
+
+    h1 {
+      font-family: var(--h-font);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 8px 0 0;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .tag {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.05);
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--stroke);
+    }
+
+    .download-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 0;
+      margin: 8px 0;
+      border-radius: 14px;
+      font-family: var(--h-font);
+      font-weight: 600;
+      background: var(--text-main);
+      color: #000;
+      text-decoration: none;
+      transition: var(--transition);
+    } 
+    .download-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px var(--accent-glow);
+    } 
+
+    .social { display: flex; gap: 16px; margin-bottom: 8px;}
+    .social a {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--stroke);
+    }
+    .social a:hover {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    nav ul { list-style: none; padding: 0; margin: 0; width: 100%; display: flex; flex-direction: column; gap: 4px;}
+    nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    } 
+    nav a i { width: 20px; text-align: center; font-size: 1.1rem; opacity: 0.7;}
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+    } 
+    nav a:hover i { opacity: 1; color: var(--accent); }
+
+
+    .content { display: flex; flex-direction: column; gap: 24px; }
+    
+    section { padding: 36px; position: relative; z-index: 1; }
+    section:hover { z-index: 10; }
+
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font: 700 1.4rem var(--h-font);
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    } 
+    section h2 i { color: var(--accent); font-size: 1.4rem; }
+
+
+    p { 
+      margin: 0; 
+      line-height: 1.8; 
+      color: var(--text-muted); 
+      font-size: 1rem; 
+      text-align: justify; 
+    }
+
+
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--stroke);
+      font-weight: 500;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .chip i { color: var(--accent); } 
+    .chip:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+
+
+    .stack { display: flex; flex-direction: column; gap: 16px; }
+    .entry {
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--stroke);
+      transition: var(--transition);
       position: relative;
-      z-index: 1;
+    } 
+    .entry:hover {
+      background: var(--surface-hover);
+      border-color: var(--stroke-light);
+      transform: translateY(-2px);
     }
-    section:hover {
-      z-index: 10;
+    .entry-title { font-family: var(--h-font); font-size: 1.1rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 4px;}
+    .entry-subtitle { font-size: 0.95rem; color: var(--text-muted); }
+    
+    .row { margin-top: 10px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;}
+    .label {
+      font: 700 0.75rem var(--h-font);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-right: 8px;
+      display: inline-block;
+      transform: translateY(-1px);
     }
-    section h2{margin-top:0;display:flex;align-items:center;gap:8px;font:700 1.05rem var(--h-font);color:var(--accent);} 
-    p{margin:0;line-height:1.6;text-align:justify;}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
-    .chip{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:white;border:1px solid var(--stroke);font-weight:600;}
-    .chip i{color:var(--accent);} 
-    .stack{display:flex;flex-direction:column;gap:14px;}
-    .entry{padding:14px 16px;border-radius:12px;background:white;border:1px solid var(--stroke);} 
-    .entry b.title{font-weight:700;}
-    .date-line{color:var(--accent-ink);font-weight:600;margin-top:4px;font-size:.85rem;}
-    .row{margin-top:6px;}
-    .label{font:700 .82rem var(--h-font);letter-spacing:.02em;text-transform:uppercase;color:#333;background:rgba(0,0,0,.04);border:1px solid var(--stroke);padding:3px 7px;border-radius:6px;margin-right:6px;}
-    .value{font-weight:700;color:var(--accent-ink);margin-left:4px;}
-    .skills-list{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
-    .skill-row{padding:10px 12px;border:1px solid var(--stroke);border-radius:10px;background:white;display:flex;align-items:flex-start;gap:10px;}
-    .skill-row i{color:var(--accent); margin-top:3px;} 
-    .gallery{display:flex;justify-content:center;gap:18px;flex-wrap:nowrap;margin-top:14px;}
-        
+    .value { font-weight: 600; color: #e5e7eb; }
+    .badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      background: var(--accent-bg);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+
+    .pub-title {
+      font-family: var(--h-font);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .pub-authors {
+      font-size: 0.95rem;
+      color: var(--text-darker);
+      line-height: 1.5;
+    }
+    .pub-authors b {
+      color: #e5e7eb; 
+      font-weight: 600;
+    }
+    .pub-venue {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 14px;
+      background: var(--accent-bg);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 8px;
+      color: #60a5fa; /* Modern blue */
+      font-family: var(--h-font);
+      font-weight: 700;
+      font-size: 0.95rem; /* Larger font */
+      letter-spacing: 0.3px;
+    }
+    .pub-venue a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(96, 165, 250, 0.5); padding-bottom: 1px; margin-left: 6px;}
+
+    /* Skills */
+    .skills-list { display: flex; flex-direction: column; gap: 12px; }
+    .skill-row {
+      padding: 16px 20px;
+      border: 1px solid var(--stroke);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition);
+    }
+    .skill-row:hover { background: rgba(255, 255, 255, 0.04); border-color: var(--stroke-light); }
+    .skill-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .skill-content b { color: var(--text-main); font-family: var(--h-font); font-size: 1rem; display: block; margin-bottom: 2px;}
+    .skill-content { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;}
+
+
+    .gallery { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
     .gallery img {
-      width: 160px;
-      height: 160px;
+      width: 180px;
+      height: 180px;
       border-radius: 20px;
       object-fit: cover;
       cursor: pointer;
       position: relative;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      border: 1px solid var(--stroke);
+    }
+    .gallery img:hover {
+      transform: scale(2.2); 
+      z-index: 50; 
+      border-color: var(--stroke-light);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.8); 
     }
 
-    .gallery img:hover {
-      transform: scale(2.2); /* زوم بیشتر*/
-      z-index: 20; 
-      box-shadow: 0 20px 40px rgba(0,0,0,.4); /* سایه غلیظ‌تر برای جدا شدن عکس از بک‌گراند*/
+    #contact p { text-align: left; }
+    #contact a { color: var(--accent); text-decoration: none; font-weight: 600; font-family: var(--h-font); letter-spacing: 0.5px;}
+    #contact a:hover { text-decoration: underline; text-underline-offset: 4px;}
+
+    /*  Responsive Design */
+    @media(max-width: 950px) {
+      .grid { grid-template-columns: 1fr; margin: 2vh auto; padding: 0 16px; gap: 20px; }
+      .sidebar { position: static; padding: 24px 20px; }
+      section { padding: 24px 20px; }
+      .gallery img { width: calc(50% - 8px); height: auto; aspect-ratio: 1/1; }
+      /* Reduce zoom slightly on mobile so it doesn't break the screen width */
+      .gallery img:hover { transform: scale(1.4); } 
+      .pub-title { font-size: 1.05rem; }
     }
   </style>
 </head>
 <body>
   <main class="grid">
+    <!-- Sidebar -->
     <aside class="sidebar glass">
       <div class="avatar"><img src="profile.jpg" alt="Ali Khoramfar"></div>
       <h1>Ali Khoramfar</h1>
       <div class="tag">NLP Researcher</div>
       <a class="download-btn" href="Ali_Khoramfar_CV.pdf" target="_blank"><i class="fas fa-download"></i> Download CV</a>
       <div class="social">
-        <a href="https://www.linkedin.com/in/ali-khoramfar/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/in/ali-khoramfar/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/Khoramfar" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://scholar.google.com/citations?user=7NZ3s_gAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i></a>
       </div>
@@ -107,6 +399,7 @@
       </nav>
     </aside>
 
+    <!-- Content -->
     <div class="content">
       <section id="about" class="glass">
         <h2><i class="fas fa-user"></i> About</h2>
@@ -128,14 +421,16 @@
         <h2><i class="fas fa-graduation-cap"></i> Education</h2>
         <div class="stack">
           <div class="entry">
-            <b class="title">University of Tehran</b> — M.Sc. Computer Engineering
-            <div class="date-line">2023 – Present</div>
+            <span class="entry-title">University of Tehran</span>
+            <span class="entry-subtitle">M.Sc. Computer Engineering</span>
+            <div class="badge">2023 – Present</div>
             <div class="row"><span class="label">GPA</span><span class="value">19.33/20 (4.0/4.0)</span></div>
             <div class="row"><span class="label">Thesis</span> Investigating the Performance of Multimodal LLMs for Medical Image Analysis</div>
           </div>
           <div class="entry">
-            <b class="title">JundiShapur University of Technology</b> — B.Sc. Computer Engineering
-            <div class="date-line">2017 – 2022</div>
+            <span class="entry-title">JundiShapur University of Technology</span>
+            <span class="entry-subtitle">B.Sc. Computer Engineering</span>
+            <div class="badge">2017 – 2022</div>
             <div class="row"><span class="label">GPA</span><span class="value">19.11/20 (4.0/4.0)</span></div>
             <div class="row"><span class="label">Project</span> Green Internet of Things and Solar Energy</div>
             <div class="row"><span class="label">Rank</span> 1st among Computer Engineering students</div>
@@ -147,24 +442,24 @@
         <h2><i class="fas fa-tools"></i> Skills</h2>
         <div class="skills-list">
           <div class="skill-row">
-            <i class="fas fa-code"></i>
-            <div><b>Programming:</b> Python (NumPy, Pandas, Matplotlib, scikit-learn, PySpark), C++, C#, SQL</div>
+            <div class="skill-icon"><i class="fas fa-code"></i></div>
+            <div class="skill-content"><b>Programming</b> Python (NumPy, Pandas, Matplotlib, scikit-learn, PySpark), C++, C#, SQL</div>
           </div>
           <div class="skill-row">
-            <i class="fas fa-cubes"></i>
-            <div><b>Frameworks:</b> PyTorch Distributed, Hugging Face (Transformers, Datasets, PEFT), LangGraph, Unsloth</div>
+            <div class="skill-icon"><i class="fas fa-cubes"></i></div>
+            <div class="skill-content"><b>Frameworks</b> PyTorch Distributed, Hugging Face (Transformers, Datasets, PEFT), LangGraph, Unsloth</div>
           </div>
           <div class="skill-row">
-            <i class="fas fa-network-wired"></i>
-            <div><b>Tools:</b> Git, MPI, Slurm, LaTeX</div>
+            <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+            <div class="skill-content"><b>Tools</b> Git, MPI, Slurm, LaTeX</div>
           </div>
           <div class="skill-row">
-            <i class="fas fa-globe"></i>
-            <div><b>Web Development:</b> HTML, CSS, PHP, Laravel, WordPress</div>
+            <div class="skill-icon"><i class="fas fa-globe"></i></div>
+            <div class="skill-content"><b>Web Development</b> HTML, CSS, PHP, Laravel, WordPress</div>
           </div>
           <div class="skill-row">
-            <i class="fas fa-camera-retro"></i>
-            <div><b>Multimedia:</b> Final Cut Pro, Adobe Photoshop; Experience in DSLR Photography & Videography</div>
+            <div class="skill-icon"><i class="fas fa-camera-retro"></i></div>
+            <div class="skill-content"><b>Multimedia</b> Final Cut Pro, Adobe Photoshop; Experience in DSLR Photography & Videography</div>
           </div>
         </div>
       </section>
@@ -172,25 +467,29 @@
       <section id="papers" class="glass">
         <h2><i class="fas fa-file-alt"></i> Publications</h2>
         <div class="stack">
+          <!-- Paper 1 -->
           <div class="entry">
-            <b class="title">Stable Evidence, Unstable Decisions: An Empirical Analysis of Model Decision Stability in VLMs</b><br>
-            <b>Khoramfar A.</b>, Dousti M. J., Mohamadian A., & Faili H.
-            <div class="date-line">ACL 2026 (Findings)</div>
+            <span class="pub-title">Stable Evidence, Unstable Decisions: An Empirical Analysis of Model Decision Stability in Vision-Language Models</span>
+            <div class="pub-authors"><b>Khoramfar A.</b>, Dousti M. J., Mohamadian A., & Faili H.</div>
+            <div class="pub-venue">ACL 2026 (Findings)</div>
           </div>
+          <!-- Paper 2 -->
           <div class="entry">
-            <b class="title">DeepQuestion: Systematic Generation of Real-World Challenges for Evaluating LLMs Performance</b><br>
-            <b>Khoramfar A.</b>, Ramezani A., Mohajeri M. M., Dousti M. J., Nili Ahmadabadi M., & Faili H.
-            <div class="date-line">LREC 2026</div>
+            <span class="pub-title">DeepQuestion: Systematic Generation of Real-World Challenges for Evaluating LLMs Performance</span>
+            <div class="pub-authors"><b>Khoramfar A.</b>, Ramezani A., Mohajeri M. M., Dousti M. J., Nili Ahmadabadi M., & Faili H.</div>
+            <div class="pub-venue">LREC 2026</div>
           </div>
+          <!-- Paper 3 -->
           <div class="entry">
-            <b class="title">PerMed-MM: A Multimodal, Multi-Specialty Persian Medical Benchmark for Evaluating Vision Language Models</b><br>
-            <b>Khoramfar A.</b>, Dousti M. J., & Faili H.
-            <div class="date-line">IJCNLP-AACL 2025 (Main Conference)</div>
+            <span class="pub-title">PerMed-MM: A Multimodal, Multi-Specialty Persian Medical Benchmark for Evaluating Vision Language Models</span>
+            <div class="pub-authors"><b>Khoramfar A.</b>, Dousti M. J., & Faili H.</div>
+            <div class="pub-venue">IJCNLP-AACL 2025 (Main Conference)</div>
           </div>
+          <!-- Paper 4 -->
           <div class="entry">
-            <b class="title">Green Internet of Things and Solar Energy</b><br>
-            Chinipardaz M., <b>Khoramfar A.</b>, & Amraee S.
-            <div class="date-line">Environmental Science and Pollution Research (2024) <a href="https://doi.org/10.1007/s11356-023-31141-z" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:bold;margin-left:4px;">[DOI]</a></div>
+            <span class="pub-title">Green Internet of Things and Solar Energy</span>
+            <div class="pub-authors">Chinipardaz M., <b>Khoramfar A.</b>, & Amraee S.</div>
+            <div class="pub-venue">Environmental Science and Pollution Research (2024) <a href="https://doi.org/10.1007/s11356-023-31141-z" target="_blank">[DOI]</a></div>
           </div>
         </div>
       </section>
@@ -199,14 +498,16 @@
         <h2><i class="fas fa-flask"></i> Research Experience</h2>
         <div class="stack">
           <div class="entry">
-            <b class="title">Graduate Student Researcher</b> — NLP Lab, University of Tehran
-            <div class="date-line">2023 – Present</div>
-            <div class="row" style="font-size:0.9rem; color:var(--muted); margin-top:8px;">Focusing on multimodal and multilingual evaluation of LLMs/VLMs, benchmark construction, and serving as a reviewer for ACL Rolling Review.</div>
+            <span class="entry-title">Graduate Student Researcher</span>
+            <span class="entry-subtitle">NLP Lab, University of Tehran</span>
+            <div class="badge">2023 – Present</div>
+            <div class="row">Focusing on multimodal and multilingual evaluation of LLMs/VLMs, benchmark construction, and serving as a reviewer for ACL Rolling Review.</div>
           </div>
           <div class="entry">
-            <b class="title">Undergraduate Research Assistant</b> — Computer Networks Lab, JundiShapur University
-            <div class="date-line">2020 – 2022</div>
-            <div class="row" style="font-size:0.9rem; color:var(--muted); margin-top:8px;">Conducted research on energy-efficient computing and designed optimizing architectures for IoT and solar-powered solutions.</div>
+            <span class="entry-title">Undergraduate Research Assistant</span>
+            <span class="entry-subtitle">Computer Networks Lab, JundiShapur University</span>
+            <div class="badge">2020 – 2022</div>
+            <div class="row">Conducted research on energy-efficient computing and designed optimizing architectures for IoT and solar-powered solutions.</div>
           </div>
         </div>
       </section>
@@ -214,18 +515,42 @@
       <section id="teaching" class="glass">
         <h2><i class="fas fa-chalkboard-teacher"></i> Teaching Experience</h2>
         <div class="stack">
-          <div class="entry"><b class="title">Head TA</b> — Large Language Models, University of Tehran<div class="date-line">Present</div></div>
-          <div class="entry"><b class="title">TA</b> — Distributed Machine Learning, University of Tehran<div class="date-line">Sep 2025 – Feb 2026</div></div>
-          <div class="entry"><b class="title">Head TA</b> — Essential Computing Skills, University of Tehran<div class="date-line">Jan 2025 – Sep 2025</div></div>
-          <div class="entry"><b class="title">TA</b> — Natural Language Processing, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
-          <div class="entry"><b class="title">TA</b> — Deep Learning, University of Tehran<div class="date-line">Aug 2024 – Feb 2025</div></div>
-          <div class="entry"><b class="title">TA</b> — Internet Engineering, JundiShapur University<div class="date-line">Sep 2021 – Jan 2022</div></div>
+          <div class="entry">
+            <span class="entry-title">Head TA — Large Language Models</span>
+            <span class="entry-subtitle">University of Tehran</span>
+            <div class="badge">Present</div>
+          </div>
+          <div class="entry">
+            <span class="entry-title">TA — Distributed Machine Learning</span>
+            <span class="entry-subtitle">University of Tehran</span>
+            <div class="badge">Sep 2025 – Feb 2026</div>
+          </div>
+          <div class="entry">
+            <span class="entry-title">Head TA — Essential Computing Skills</span>
+            <span class="entry-subtitle">University of Tehran</span>
+            <div class="badge">Jan 2025 – Sep 2025</div>
+          </div>
+          <div class="entry">
+            <span class="entry-title">TA — Natural Language Processing</span>
+            <span class="entry-subtitle">University of Tehran</span>
+            <div class="badge">Aug 2024 – Feb 2025</div>
+          </div>
+          <div class="entry">
+            <span class="entry-title">TA — Deep Learning</span>
+            <span class="entry-subtitle">University of Tehran</span>
+            <div class="badge">Aug 2024 – Feb 2025</div>
+          </div>
+          <div class="entry">
+            <span class="entry-title">TA — Internet Engineering</span>
+            <span class="entry-subtitle">JundiShapur University</span>
+            <div class="badge">Sep 2021 – Jan 2022</div>
+          </div>
         </div>
       </section>
 
       <section id="extra" class="glass">
         <h2><i class="fas fa-heart"></i> Activities</h2>
-        <p class="muted">Canoeing · Mountaineering · Biking · Nature Photography</p>
+        <p>Canoeing · Mountaineering · Biking · Nature Photography</p>
         <div class="gallery">
           <img src="canoeing.jpg" alt="Canoeing">
           <img src="mountains.jpg" alt="Mountain Climbing">
@@ -236,7 +561,7 @@
 
       <section id="contact" class="glass">
         <h2><i class="fas fa-envelope"></i> Contact</h2>
-        <p><i class="fas fa-at"></i> Email: <a href="mailto:Alikhorramfar@gmail.com" style="color:var(--accent);text-decoration:none;font-weight:600;">Alikhorramfar@gmail.com</a></p>
+        <p><i class="fas fa-at" style="color:var(--text-muted); margin-right:8px;"></i> Email: <a href="mailto:Alikhorramfar@gmail.com">Alikhorramfar@gmail.com</a></p>
       </section>
     </div>
   </main>
